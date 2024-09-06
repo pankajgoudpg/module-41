@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exchange Money</title>
+        <style>
+            div{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-top: 50px;
+
+            }
+            h1{
+                background-color: #808080;
+                padding: 20px 40px;
+                border-radius: 20px;
+            }
+
+            #inventory{
+                height: 150px;
+                width: 300px;
+                background-color: aqua;
+                font-size: 20px;
+                border-radius: 20px;
+                padding: 20px 40px;
+            }
+            #converted-inventory{
+                height: 150px;
+                width: 300px;
+                background-color: aqua;
+                font-size: 20px;
+                border-radius: 20px;
+                padding: 20px 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+        <h1>Store Inventory</h1>
+        <pre id="inventory"></pre>
+        <pre id="converted-inventory"></pre>
+    </div>
+        <script>
+        
+            const inventoryUSD = {
+                "Laptop": 1000 ,
+                "Smartphone": 500,
+                "Tablet": 300,
+                "Headphones": 150
+           };
+    
+            const exchangeRate = 80; // 1 USD to 80 INR
+    
+    
+            function convertPricesToINR(inventory, rate) {
+                return Object.fromEntries(
+                    Object.entries(inventory).map(([item, price]) => [item, price * rate])
+                );
+            }
+    
+            const inventoryINR = convertPricesToINR(inventoryUSD, exchangeRate);
+    
+        
+            document.getElementById('inventory').textContent = 'USD Doller:\n' + JSON.stringify(inventoryUSD, null, 2);
+            document.getElementById('converted-inventory').textContent = 'Converted INR Rupess:\n' + JSON.stringify(inventoryINR, null, 2);
+
+
+
+        </script>
+    </body>
+    </html>
+    
+
+
+

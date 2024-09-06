@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinkedIn Profile URL Validator</title>
+    <link rel="icon" href="./linkedin-in-brands-solid.svg" />
+    <!-- google link  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Arimo", sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      input {
+        padding: 10px;
+        margin-bottom: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        /* border-radius: 2px; */
+        /* border: none; */
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #015d8f;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 15px;
+      }
+
+      button:hover {
+        background-color: #003c5c;
+      }
+
+      #result {
+        margin-top: 15px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>LinkedIn Profile URL Validator</h1>
+      <input
+        type="text"
+        id="urlInput"
+        placeholder="Enter LinkedIn profile URL"
+      />
+      <button onclick="validateURL()">Validate URL</button>
+      <p id="result"></p>
+    </div>
+    <script>
+      function validateURL() {
+        const urlInput = document.getElementById("urlInput").value;
+        const resultElement = document.getElementById("result");
+
+        const pattern =
+          /^https:\/\/www\.linkedin\.com\/in\/[a-zA-Z0-9_-]{5,30}[a-zA-Z0-9]$/;
+
+        if (pattern.test(urlInput)) {
+          resultElement.textContent = "Valid LinkedIn profile URL.";
+          resultElement.style.color = "green";
+        } else {
+          resultElement.textContent = "Invalid LinkedIn profile URL.";
+          resultElement.style.color = "red";
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Validation</title>
+</head>
+<body>
+    <script>
+        
+        const urlRegex = /^(https?:\/\/)[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+       
+        function validateURL(url) {
+            if (urlRegex.test(url)) {
+                console.log('The URL is valid.');
+            } else {
+                console.log('The URL is invalid.');
+            }
+        }
+        const testUrls = [
+            'https://www.pw.live/',
+            'https://www.google.co.in/',
+            'http://www.instagram.com',
+            'http://github.com',
+            'ftp://example.com',
+            'https://.com'
+        ];
+
+        testUrls.forEach(url => {
+            console.log(`Testing: ${url}`);
+            validateURL(url);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Generator with Delay</title>
+    <style>
+        #countdown {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        #result {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown">Random Generating number in...</div>
+    <div id="result"></div>
+
+    <script>
+        
+        const delay = 3000;
+
+        
+        function generateRandomNumber() {
+            return Math.floor(Math.random() * 100) + 1; 
+
+        }
+        function startCountdown() {
+            const countdownElement = document.getElementById('countdown');
+            const resultElement = document.getElementById('result');
+            let remainingTime = delay / 1000; 
+
+            const intervalId = setInterval(() => {
+                remainingTime -= 1;
+                countdownElement.textContent = `Generating number in ${remainingTime} seconds...`;
+
+                if (remainingTime <= 0) {
+                    clearInterval(intervalId);
+                    const randomNumber = generateRandomNumber();
+                    resultElement.textContent = `Generated Number: ${randomNumber}`;
+                }
+            }, 1000); 
+        }
+        window.onload = startCountdown;
+    
+    </script>
+</body>
+</html>

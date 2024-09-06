@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Publisher Filter</title>
+</head>
+<body>
+    <script>
+       
+        const books = [
+            { title: 'The Phantom Tollbooth', author: 'Norton Juster', publicationYear: 1961 },
+            { title: 'The Secret History', author: 'Donna Tartt', publicationYear: 1992 },
+            { title: 'The Road', author: 'cormac mccarthy', publicationYear: 2006 },
+            { title: 'Youth', author: 'J. M. Coetzee', publicationYear: 2002 },
+            { title: 'Rich Dad Poor Dad', author: 'Robert T. Kiyosaki and Sharon Lechter', publicationYear: 1997 },
+            { title: 'The Goldfinch', author: 'donna tartt', publicationYear: 2013 },
+            { title: 'Where the Crawdads Sing', author: 'delia owens', publicationYear: 2018 }
+        ];
+
+       
+        function capitalizeAuthorName(name) {
+            return name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+        }
+
+       
+        const filteredBooks = books
+            .filter(book => book.publicationYear >= 2010)
+            .map(book => ({
+                ...book,
+                author: capitalizeAuthorName(book.author)
+            }));
+
+        
+         console.log(filteredBooks);
+    </script>
+</body>
+</html>
